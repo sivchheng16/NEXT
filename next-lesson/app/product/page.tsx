@@ -1,6 +1,13 @@
+import Link from "next/link";
 
 function page() {
-  return <div>Product page</div>;
+  return (
+    <>
+      <Link href="/">Home</Link>
+      <div>Product page</div>;
+    </>
+  )
 }
 
 export default page;
+ 
