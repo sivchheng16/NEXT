@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { cache, Suspense } from "react";
 
 export default async function page() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -6,13 +6,17 @@ export default async function page() {
     // {cache:"force-cache"},
     // {catche: "no-store"},
   });
+
   const posts: any[] = await res.json();
+
   return (
     <div>
       {posts.map((photo: any) => (
-        <div key={photo.id} className="p-10">
-          {photo.title}
-        </div>
+        <Suspense fallback={<div>Loading aljdflajsdlk...</div>}>
+          <div key={photo.id} className="p-10">
+            {photo.title}
+          </div>
+        </Suspense>
       ))}
     </div>
   );
